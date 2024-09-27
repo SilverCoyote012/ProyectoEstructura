@@ -4,7 +4,8 @@ USE Similares;
 CREATE TABLE IF NOT EXISTS USUARIOS (
     ID_Usuario INTEGER PRIMARY KEY AUTO_INCREMENT,
     Correo VARCHAR(100) NOT NULL UNIQUE,
-    Password VARCHAR(100) NOT NULL
+    Password VARCHAR(100) NOT NULL,
+    Rol VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS DOCTORES (
@@ -36,37 +37,37 @@ CREATE TABLE IF NOT EXISTS REPORTE (
 );
 
 /* Crea datos */
-INSERT INTO USUARIOS (Correo, Password) VALUES
-('usuario1@example.com', 'password1'),
-('usuario2@example.com', 'password2'),
-('usuario3@example.com', 'password3'),
-('usuario4@example.com', 'password4'),
-('usuario5@example.com', 'password5'),
-('usuario6@example.com', 'password6'),
-('usuario7@example.com', 'password7'),
-('usuario8@example.com', 'password8'),
-('usuario9@example.com', 'password9'),
-('usuario10@example.com', 'password10'),
-('usuario11@example.com', 'password11'),
-('usuario12@example.com', 'password12'),
-('usuario13@example.com', 'password13'),
-('usuario14@example.com', 'password14'),
-('usuario15@example.com', 'password15'),
-('usuario16@example.com', 'password16'),
-('usuario17@example.com', 'password17'),
-('usuario18@example.com', 'password18'),
-('usuario19@example.com', 'password19'),
-('usuario20@example.com', 'password20'),
-('usuario21@example.com', 'password21'),
-('usuario22@example.com', 'password22'),
-('usuario23@example.com', 'password23'),
-('usuario24@example.com', 'password24'),
-('usuario25@example.com', 'password25'),
-('usuario26@example.com', 'password26'),
-('usuario27@example.com', 'password27'),
-('usuario28@example.com', 'password28'),
-('usuario29@example.com', 'password29'),
-('usuario30@example.com', 'password30');
+INSERT INTO USUARIOS (Correo, Password, rol) VALUES
+('usuario1@example.com', 'password1', 'Doctor'),
+('usuario2@example.com', 'password2', 'Doctor'),
+('usuario3@example.com', 'password3', 'Doctor'),
+('usuario4@example.com', 'password4', 'Doctor'),
+('usuario5@example.com', 'password5', 'Doctor'),
+('usuario6@example.com', 'password6', 'Doctor'),
+('usuario7@example.com', 'password7', 'Doctor'),
+('usuario8@example.com', 'password8', 'Doctor'),
+('usuario9@example.com', 'password9', 'Doctor'),
+('usuario10@example.com', 'password10', 'Doctor'),
+('usuario11@example.com', 'password11', 'Doctor'),
+('usuario12@example.com', 'password12', 'Doctor'),
+('usuario13@example.com', 'password13', 'Doctor'),
+('usuario14@example.com', 'password14', 'Doctor'),
+('usuario15@example.com', 'password15', 'Doctor'),
+('usuario16@example.com', 'password16', 'Doctor'),
+('usuario17@example.com', 'password17', 'Doctor'),
+('usuario18@example.com', 'password18', 'Doctor'),
+('usuario19@example.com', 'password19', 'Doctor'),
+('usuario20@example.com', 'password20', 'Doctor'),
+('usuario21@example.com', 'password21', 'Doctor'),
+('usuario22@example.com', 'password22', 'Doctor'),
+('usuario23@example.com', 'password23', 'Doctor'),
+('usuario24@example.com', 'password24', 'Doctor'),
+('usuario25@example.com', 'password25', 'Recepcionista'),
+('usuario26@example.com', 'password26', 'Recepcionista'),
+('usuario27@example.com', 'password27', 'Recepcionista'),
+('usuario28@example.com', 'password28', 'Recepcionista'),
+('usuario29@example.com', 'password29', 'Recepcionista'),
+('usuario30@example.com', 'password30', 'Recepcionista');
 
 INSERT INTO DOCTORES (Nombre, Apellido, Telefono, ID_Usuario) VALUES
 ('José', 'García', '555-2526', 1),
