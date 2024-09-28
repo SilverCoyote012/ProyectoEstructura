@@ -14,6 +14,7 @@ public class sesion {
     // Método para cerrar sesion
     public static void cerrarSesion() {
         sesion.correo = null;
+        sesion.rol = null;
     }
 
     // Método para obtener el correo del usuario

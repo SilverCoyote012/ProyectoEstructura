@@ -9,6 +9,7 @@ import java.util.Scanner;
 import com.silver.main.conexionDB;
 import com.silver.main.menu.menuDoctor;
 import com.silver.main.menu.menuReception;
+import com.silver.main.utils;
 
 public class login {
     // Método para iniciar sesión
@@ -39,10 +40,12 @@ public class login {
                 switch (rs.getString("rol")) {
                     case "Doctor":
                         // Llamada a la clase menuDoctor
+                        utils.limpiarConsola();
                         menuDoctor.menu();
                         break;
                     case "Recepcionista":
                         // Llamada a la clase menuReception
+                        utils.limpiarConsola();
                         menuReception.menu();
                         break;
                     default:

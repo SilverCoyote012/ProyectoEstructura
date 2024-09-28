@@ -22,13 +22,16 @@ public class app {
         switch (opcion) {
             case 1:
                 // Llamada a la clase login
+                utils.limpiarConsola();
                 login.iniciarSesion();
                 break;
             case 2:
                 // Llamada a la clase register
+                utils.limpiarConsola();
                 register.registrar();
                 break;
             case 3:
+                utils.limpiarConsola();
                 System.out.println("Gracias por usar el sistema de control de inventario de Farmacias Similares");
                 break;
             default:

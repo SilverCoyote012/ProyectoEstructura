@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 import com.silver.main.conexionDB;
+import com.silver.main.app;
+import com.silver.main.utils;
 
 public class register {
     public static void registrar() {
@@ -41,6 +43,10 @@ public class register {
             System.out.println("Usuario registrado correctamente");
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            // Volver al menu principal
+            utils.limpiarConsola();
+            app.main(null);
         }
     }
 }
