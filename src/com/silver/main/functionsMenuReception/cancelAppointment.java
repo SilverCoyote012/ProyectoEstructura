@@ -1,10 +1,11 @@
-package com.silver.main.functionsMenu;
+package com.silver.main.functionsMenuReception;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 import com.silver.main.conexionDB;
 import com.silver.main.menu.menuReception;
@@ -24,11 +25,11 @@ public class cancelAppointment {
         String sql = "SELECT * FROM citas WHERE nombre_paciente = ?";
 
         try (Connection conexion = conexionDB.getConnection();
-            PreparedStatement pst = conexion.prepareStatement(sql)) {
+             PreparedStatement pst = conexion.prepareStatement(sql)) {
             pst.setString(1, nombrePaciente);
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
-                // Buscar si la cita tiene algun reporte medico asociado
+                // Buscar si la cita tiene algún reporte médico asociado
                 int idCita = rs.getInt("id_cita");
                 String sqlReporte = "SELECT * FROM reporte WHERE id_cita = ?";
 
@@ -36,7 +37,7 @@ public class cancelAppointment {
                     pstReporte.setInt(1, idCita);
                     ResultSet rsReporte = pstReporte.executeQuery();
                     if (rsReporte.next()) {
-                        System.out.println("El paciente no tiene citas sin reporte medico asociado");
+                        System.out.println("El paciente no tiene citas sin reporte médico asociado");
                     } else {
                         // Buscar el doctor asociado a la cita
                         int idDoctor = rs.getInt("id_doctor");
@@ -52,13 +53,42 @@ public class cancelAppointment {
                                 try (PreparedStatement pstCitas = conexion.prepareStatement(sql)) {
                                     pstCitas.setString(1, nombrePaciente);
                                     ResultSet rsCitas = pstCitas.executeQuery();
+
+                                    // Crear una lista de citas relacionadas al paciente
+                                    ArrayList<Integer> idCitasPacientes = new ArrayList<>();
+
                                     System.out.println("Citas relacionadas al paciente:");
                                     while (rsCitas.next()) {
                                         System.out.println("ID Cita: " + rsCitas.getInt("id_cita"));
-                                        System.out.println("Fecha: " + rsCitas.getString("fecha"));
-                                        System.out.println("Hora: " + rsCitas.getString("hora"));
+                                        // Agregar el id de la cita a la lista
+                                        idCitasPacientes.add(rsCitas.getInt("id_cita"));
+                                        System.out.println("Nombre del paciente: " + rsCitas.getString("nombre_paciente"));
+                                        System.out.println("Fecha de registro: " + rsCitas.getString("fecha"));
+                                        System.out.println("Hora de registro: " + rsCitas.getString("hora"));
                                         System.out.println("Doctor: " + nombreDoctor + " " + apellidoDoctor);
                                         System.out.println("====================================================================");
+                                    }
+
+                                    // Seleccionar la cita a cancelar
+                                    System.out.print("ID de la cita a cancelar: ");
+                                    int idCitaCancelar = sc.nextInt();
+                                    sc.nextLine();  // Consumir el salto de línea
+
+                                    if (idCitasPacientes.contains(idCitaCancelar)) {
+                                        String sqlEliminarCita = "DELETE FROM citas WHERE id_cita = ?";
+                                        try (PreparedStatement pstEliminarCita = conexion.prepareStatement(sqlEliminarCita)) {
+                                            pstEliminarCita.setInt(1, idCitaCancelar);
+                                            int filasAfectadas = pstEliminarCita.executeUpdate();
+                                            if (filasAfectadas > 0) {
+                                                System.out.println("Cita cancelada con éxito");
+                                            } else {
+                                                System.out.println("No se pudo cancelar la cita, verifica el ID.");
+                                            }
+                                        } catch (SQLException e) {
+                                            e.printStackTrace();
+                                        }
+                                    } else {
+                                        System.out.println("ID de cita no válido o no pertenece al paciente");
                                     }
                                 } catch (SQLException e) {
                                     e.printStackTrace();

@@ -9,7 +9,7 @@ public class app {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("====================================================================");
-        System.out.println("Bienvenido Sistema de Citas Medicas de Farmacias Similares");
+        System.out.println("Bienvenido Sistema de Urgencias del Hospital");
         System.out.println("====================================================================");
         System.out.println("1.- Iniciar sesion");
         System.out.println("2.- Registrarse");
@@ -32,7 +32,7 @@ public class app {
                 break;
             case 3:
                 utils.limpiarConsola();
-                System.out.println("Gracias por usar el sistema de control de inventario de Farmacias Similares");
+                System.out.println("Gracias por usar el sistema de control de citas de urgencias del Hospital");
                 break;
             default:
                 System.out.println("Opcion no valida");

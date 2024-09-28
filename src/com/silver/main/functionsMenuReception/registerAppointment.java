@@ -1,4 +1,4 @@
-package com.silver.main.functionsMenu;
+package com.silver.main.functionsMenuReception;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,7 +17,7 @@ public class registerAppointment {
     public static void registrarCita() {
         try {
             System.out.println("====================================================================");
-            System.out.println("Registro de cita");
+            System.out.println("Registro de Llegada de Paciente");
             System.out.println("====================================================================");
 
             Scanner sc = new Scanner(System.in);
@@ -43,7 +43,7 @@ public class registerAppointment {
             Date fecha = null;
 
             while (true) {
-                System.out.print("Fecha de la cita (YYYY-MM-DD): ");
+                System.out.print("Fecha del dia (YYYY-MM-DD): ");
                 String fechaInput = sc.nextLine();
                 try {
                     fecha = dateFormat.parse(fechaInput);
@@ -58,7 +58,7 @@ public class registerAppointment {
             Date hora = null;
 
             while (true) {
-                System.out.print("Hora de la cita (HH:MM): ");
+                System.out.print("Hora de llegada (HH:MM): ");
                 String horaInput = sc.nextLine();
                 try {
                     hora = timeFormat.parse(horaInput);
@@ -70,7 +70,7 @@ public class registerAppointment {
 
             int prioridad = 0;
             while (true) {
-                System.out.print("Prioridad de la cita (1-3): ");
+                System.out.print("Prioridad del paciente (1-3): ");
                 prioridad = sc.nextInt();
                 sc.nextLine();
                 if (prioridad >= 1 && prioridad <= 3) {

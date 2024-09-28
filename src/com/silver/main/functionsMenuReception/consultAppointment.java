@@ -1,4 +1,4 @@
-package com.silver.main.functionsMenu;
+package com.silver.main.functionsMenuReception;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -72,8 +72,8 @@ public class consultAppointment {
                             System.out.println("ID de la cita: " + rs.getInt("ID_Cita"));
                             System.out.println("Nombre del paciente: " + rs.getString("nombre_paciente"));
                             System.out.println("Nombre del doctor: " + rsDoctor.getString("nombre"));
-                            System.out.println("Fecha: " + rs.getString("fecha"));
-                            System.out.println("Hora: " + rs.getString("hora"));
+                            System.out.println("Fecha de registro: " + rs.getString("fecha"));
+                            System.out.println("Hora de registro: " + rs.getString("hora"));
                             System.out.println("====================================================================");
                         }
                     } catch (SQLException e) {
@@ -115,8 +115,8 @@ public class consultAppointment {
                         do {
                             System.out.println("Nombre del paciente: " + rsCitas.getString("nombre_paciente"));
                             System.out.println("Nombre del doctor: " + rs.getString("nombre") + " " + rs.getString("apellido"));
-                            System.out.println("Fecha: " + rsCitas.getString("fecha"));
-                            System.out.println("Hora: " + rsCitas.getString("hora"));
+                            System.out.println("Fecha de registro: " + rsCitas.getString("fecha"));
+                            System.out.println("Hora de registro: " + rsCitas.getString("hora"));
                             System.out.println("====================================================================");
                         } while (rsCitas.next());
                     } else {

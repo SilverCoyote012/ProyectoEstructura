@@ -2,11 +2,11 @@ package com.silver.main.menu;
 
 import java.util.Scanner;
 
-import com.silver.main.functionsMenu.cancelAppointment;
-import com.silver.main.functionsMenu.consultAppointment;
-import com.silver.main.functionsMenu.registerAppointment;
 import com.silver.main.sesion.sesion;
 import com.silver.main.utils;
+import com.silver.main.functionsMenuReception.cancelAppointment;
+import com.silver.main.functionsMenuReception.consultAppointment;
+import com.silver.main.functionsMenuReception.registerAppointment;
 
 public class menuReception {
     public static void menu() {
@@ -42,7 +42,7 @@ public class menuReception {
                 break;
             case 4:
                 utils.limpiarConsola();
-                System.out.println("Gracias por usar el sistema de control de citas medicas de Farmacias Similares");
+                System.out.println("Gracias por usar el sistema de control de citas de urgencias del Hospital");
                 // Borrar la informacion del usuario
                 sesion.cerrarSesion();
                 break;
